@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:go_router_app/main.dart';
 import 'package:go_router_app/models/user.dart';
 
 class HomePage extends StatelessWidget {
@@ -38,7 +37,12 @@ class HomePage extends StatelessWidget {
                 ),
                 const SizedBox(width: 20),
                 MaterialButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    context.pushNamed(
+                      '/pricing',
+                      pathParameters: {'price': '49.99'},
+                    );
+                  },
                   color: Colors.green,
                   child: const Text(
                     'Pricing',

@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:go_router_app/models/user.dart';
 import 'package:go_router_app/pages/home_page.dart';
 import 'package:go_router_app/pages/login_page.dart';
+import 'package:go_router_app/pages/pricing_page.dart';
 import 'package:go_router_app/pages/profile_page.dart';
 
 void main() {
@@ -44,6 +45,14 @@ final GoRouter _router = GoRouter(
       builder: (context, state) {
         final User user = state.extra as User;
         return ProfilePage(user: user);
+      },
+    ),
+    GoRoute(
+      name: '/pricing',
+      path: '/pricing/:price',
+      builder: (context, state) {
+        final double amount = double.parse(state.pathParameters["price"]!);
+        return PricingPage(amount: amount);
       },
     ),
   ],
