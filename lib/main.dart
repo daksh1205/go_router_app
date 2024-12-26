@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:go_router_app/models/user.dart';
 import 'package:go_router_app/pages/home_page.dart';
 import 'package:go_router_app/pages/login_page.dart';
+import 'package:go_router_app/pages/profile_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -30,10 +32,19 @@ final GoRouter _router = GoRouter(
       },
     ),
     GoRoute(
-        path: '/login',
-        name: '/login',
-        builder: (context, state) {
-          return const LoginPage();
-        }),
+      path: '/login',
+      name: '/login',
+      builder: (context, state) {
+        return const LoginPage();
+      },
+    ),
+    GoRoute(
+      path: '/profile',
+      name: '/profile',
+      builder: (context, state) {
+        final User user = state.extra as User;
+        return ProfilePage(user: user);
+      },
+    ),
   ],
 );
